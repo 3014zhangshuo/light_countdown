@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'countdowns#index'
+
+  resources :countdowns
+
+  get '/auth/:provider/callback' => 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  delete '/logout', to: 'sessions#destroy', as: :logout
 end
