@@ -1,0 +1,26 @@
+<div id="countdown-create" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">新建倒计时</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for Countdown.new, remote: true do |field| %>
+          <div class="form-group">
+            <%= field.input :event, class: "form-control is-valid" %>
+          </div>
+          <div class="form-group">
+            <%= field.input :end_at, as: :date, start_year: Date.today.year, end_year: Date.today.year + 100, class: "form-control is-valid" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <%= submit_tag "保存", form: "new_countdown", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+</div>
